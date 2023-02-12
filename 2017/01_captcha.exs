@@ -3,7 +3,6 @@
 content = String.split(content, "", trim: true) |> Enum.map(&(String.to_integer(&1)))
 
 # First star
-
 sum = content
 |> Enum.with_index()
 |> Enum.filter(fn({c, i}) -> c == Enum.at(content, i + 1) end)
@@ -17,7 +16,6 @@ else
 end
 
 # Second star
-
 content
 |> Enum.chunk_every(div(length(content), 2))
 |> Enum.zip()
