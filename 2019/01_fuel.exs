@@ -1,5 +1,7 @@
 {_result, content} = File.read("./01_fuel.txt")
 
+modules = content |> String.split() |> Enum.map(&(String.to_integer(&1)))
+
 defmodule Fuel do
   def calc(mass), do: div(mass, 3) - 2
 
@@ -17,17 +19,7 @@ defmodule Fuel do
 end
 
 # First star
-content
-|> String.split()
-|> Enum.map(&(String.to_integer(&1)))
-|> Enum.map(&(Fuel.calc(&1)))
-|> Enum.sum()
-|> IO.puts
+modules |> Enum.map(&(Fuel.calc(&1))) |> Enum.sum() |> IO.puts
 
 # Second star
-content
-|> String.split()
-|> Enum.map(&(String.to_integer(&1)))
-|> Enum.map(&(Fuel.calc_rec(&1)))
-|> Enum.sum()
-|> IO.puts
+modules |> Enum.map(&(Fuel.calc_rec(&1))) |> Enum.sum() |> IO.puts
